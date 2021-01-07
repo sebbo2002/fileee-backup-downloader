@@ -1,0 +1,12 @@
+{
+  "name": "@sebbo2002/fileee-backup-downloader",
+  "version": "1.0.0-dev",
+  "private": true,
+  "description": "A hacked script that logs into Fileee and downloads a full backup. Written for offsite backups.",
+  "main": "fileee-backup-downloader.js",
+  "author": "Sebastian Pekarek <poleezeizeixatheepho@e.sebbo.net>",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^5.5.0"
+  }
+}
