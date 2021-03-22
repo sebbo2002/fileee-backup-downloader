@@ -60,10 +60,11 @@ class FileeeBackupDownloader {
         const $passwordInput = await page.waitForSelector('[name="password"]');
         await $passwordInput.type(password);
         await $passwordInput.press('Enter');
+        await page.waitForTimeout(2500);
 
         this.logJobStart('📑', 'Open download layer');
         const $downloadButton = await page.waitForSelector('.grid-noGutter-spaceBetween button');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(1000);
         await $downloadButton.click();
         await page.waitForTimeout(100);
 
@@ -89,7 +90,11 @@ class FileeeBackupDownloader {
         await page.waitForSelector('.ReactModalPortal .mdc-typography--caption span');
         const interval = setInterval(async () => {
             page.$eval('.ReactModalPortal .mdc-typography--caption span', s => s.textContent)
-                .then(state => process.stdout.write(`\r🔄 Prepare download (${state.split(' ')[0]})`))
+                .then(state => {
+                    if(!process.env.FILEEE_NO_LOG) {
+                        process.stdout.write(`\r🔄 Prepare download (${state.split(' ')[0]})`);
+                    }
+                })
                 .catch(error => {/* ignore errors here */});
         }, 1000);
         await page.waitForResponse(
@@ -117,11 +122,17 @@ class FileeeBackupDownloader {
         this.logJobStart('⏩', 'Move file to destination');
         await rename(filePath, destination);
         this.logJobEnd();
-        console.log('\n🎉 Completed');
-        console.log(`   Backup path: ${destination}`);
+
+        if(!process.env.FILEEE_NO_LOG) {
+            console.log('\n🎉 Completed');
+            console.log(`   Backup path: ${destination}`);
+        }
     }
 
     static logJobStart(emoji, name) {
+        if(process.env.FILEEE_NO_LOG) {
+            return;
+        }
         if(this.logJobStart.current) {
             this.logJobEnd();
         }
@@ -131,7 +142,7 @@ class FileeeBackupDownloader {
     }
 
     static logJobEnd() {
-        if(!this.logJobStart.current) {
+        if(!this.logJobStart.current || process.env.FILEEE_NO_LOG) {
             return;
         }
 
