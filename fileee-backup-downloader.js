@@ -62,7 +62,7 @@ class FileeeBackupDownloader {
         await $passwordInput.press('Enter');
 
         this.logJobStart('📑', 'Open download layer');
-        const $downloadButton = await page.waitForSelector('.grid-noPb-spaceBetween button');
+        const $downloadButton = await page.waitForSelector('.grid-noGutter-spaceBetween button');
         await page.waitForTimeout(100);
         await $downloadButton.click();
         await page.waitForTimeout(100);
