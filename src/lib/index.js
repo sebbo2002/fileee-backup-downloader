@@ -94,7 +94,7 @@ export default class FileeeBackupDownloader {
                         process.stdout.write(`\r🔄 Prepare download (${state.split(' ')[0]})`);
                     }
                 })
-                .catch(error => {/* ignore errors here */});
+                .catch(() => {/* ignore errors here */});
         }, 1000);
         await page.waitForResponse(
             r => r.url().startsWith('https://my.fileee.com/api/v1/zip/download/'),

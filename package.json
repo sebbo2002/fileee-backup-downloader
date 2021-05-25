@@ -7,7 +7,7 @@
     "build": "rollup -c && chmod +x ./dist/bin/*.js",
     "start": "node ./dist/bin/start.js",
     "develop": "rollup -c --watch",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint .",
     "test": "mocha",
     "coverage": "nyc mocha",
     "license-check": "license-checker --production --summary"
