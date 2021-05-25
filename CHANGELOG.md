@@ -1,3 +1,16 @@
+# 1.0.0-develop.1 (2021-05-25)
+
+
+### Bug Fixes
+
+* Update code for redesign ([dc38469](https://github.com/sebbo2002/fileee-backup-downloader/commit/dc3846942530de95271b539698a54309babe05db))
+
+
+### Features
+
+* FILEEE_NO_LOG ([992f685](https://github.com/sebbo2002/fileee-backup-downloader/commit/992f685928466690b2e409c313870282065c3a58))
+* first commit 👋🏼 ([9aefef6](https://github.com/sebbo2002/fileee-backup-downloader/commit/9aefef684565870c1ce10951d11b1c9a6089d8b2))
+
 # [1.0.0-develop.3](https://github.com/sebbo2002/js-template-test/compare/v1.0.0-develop.2...v1.0.0-develop.3) (2021-05-08)
 
 
