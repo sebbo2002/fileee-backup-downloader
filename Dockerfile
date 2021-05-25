@@ -14,7 +14,7 @@ FROM node:lts-alpine@sha256:3689ad4435a413342ccc352170ad0f77433b41173af7fe4c0076
 ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
 
-RUN apk add --no-cache --update dumb-init && \
+RUN apk add --no-cache --update dumb-init chromium && \
     ln -s /app/dist/bin/start.js /usr/local/bin/start
 
 COPY --from=build-container "/app" "/app"
