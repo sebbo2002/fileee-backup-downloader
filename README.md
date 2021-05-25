@@ -15,6 +15,20 @@ to create my own backup of my documents at regular intervals. Just to be sure.
 
 <br />
 
+## 📦 Installation
+
+	npm i -g @sebbo2002/fileee-backup-downloader
+    fileee-backup-downloader
+
+    docker run --rm \
+        -e FILEEE_USERNAME=**** \
+        -e FILEEE_PASSWORD=**** \
+        -e BACKUP_DESTINATION=/backup/fileee-backup.zip \
+        -v $(pwd):/backup
+        @sebbo2002/fileee-backup-downloader
+
+<br />
+
 ## 🔧 Usage
 
 | Environment Variable | Description                                                                  |

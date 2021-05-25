@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-const os = require('os');
-const path = require('path');
-const {mkdtemp, readdir, rename} = require('fs/promises');
+import {tmpdir} from 'os';
+import readline from 'readline';
+import {resolve, join} from 'path';
+import {mkdtemp, readdir, rename}  from 'fs/promises';
+import puppeteer from 'puppeteer';
 
-const puppeteer = require('puppeteer');
-const readline = require('readline');
-
-class FileeeBackupDownloader {
+export default class FileeeBackupDownloader {
     static async run() {
         console.log('👋🏼 Okay, hi there.');
         console.log('   Let\' do some backups!');
@@ -25,7 +24,7 @@ class FileeeBackupDownloader {
         }
 
         this.logJobStart('⚙️', 'Launch virtual browser');
-        const destination = process.env.BACKUP_DESTINATION || path.resolve(process.env.HOME, 'fileee-backup.zip');
+        const destination = process.env.BACKUP_DESTINATION || resolve(process.env.HOME, 'fileee-backup.zip');
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
 
@@ -81,7 +80,7 @@ class FileeeBackupDownloader {
         }
 
         this.logJobStart('🔄', 'Prepare download');
-        const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'fileee-download-'));
+        const tmpDir = await mkdtemp(join(tmpdir(), 'fileee-download-'));
         await page._client.send('Page.setDownloadBehavior', {
             behavior: 'allow',
             downloadPath: tmpDir,
@@ -109,7 +108,7 @@ class FileeeBackupDownloader {
             const files = await readdir(tmpDir);
             const zipFileName = files.find(file => file.endsWith('.zip'));
             if(zipFileName) {
-                filePath = path.join(tmpDir, zipFileName);
+                filePath = join(tmpDir, zipFileName);
                 break;
             }
 
@@ -167,5 +166,3 @@ class FileeeBackupDownloader {
         console.log(`✅  ${name}${durationTxt}`);
     }
 }
-
-module.exports = FileeeBackupDownloader;
