@@ -1,13 +1,13 @@
 FROM node:lts-alpine@sha256:3689ad4435a413342ccc352170ad0f77433b41173af7fe4c0076f0c9792642cb as build-container
 
 WORKDIR "/app"
+RUN apk add --no-cache --update chromium
 
 COPY package*.json "/app/"
 RUN npm ci
 
 COPY . "/app/"
-RUN apk add --no-cache --update chromium && \
-    npm run build && \
+RUN npm run build && \
     rm -rf ./.github ./src ./test
 
 
