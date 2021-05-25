@@ -1,15 +1,59 @@
 {
   "name": "@sebbo2002/fileee-backup-downloader",
   "version": "1.0.0-dev",
-  "private": true,
   "description": "A hacked script that logs into Fileee and downloads a full backup. Written for offsite backups.",
-  "main": "fileee-backup-downloader.js",
+  "scripts": {
+    "build-all": "./.github/workflows/build.sh",
+    "build": "rollup -c && chmod +x ./dist/bin/*.js",
+    "start": "node ./dist/bin/start.js",
+    "develop": "rollup -c --watch",
+    "lint": "eslint .",
+    "test": "mocha",
+    "coverage": "nyc mocha",
+    "license-check": "license-checker --production --summary"
+  },
+  "bin": {
+    "test-cli": "./dist/bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebbo2002/fileee-backup-downloader.git"
+  },
   "author": "Sebastian Pekarek <poleezeizeixatheepho@e.sebbo.net>",
   "license": "MIT",
-  "dependencies": {
-    "puppeteer": "^5.5.0"
+  "bugs": {
+    "url": "https://github.com/sebbo2002/fileee-backup-downloader/issues"
   },
-  "scripts": {
-    "start": "node ./bin/run.js"
+  "homepage": "https://github.com/sebbo2002/fileee-backup-downloader#readme",
+  "devDependencies": {
+    "@amanda-mitchell/semantic-release-npm-multiple": "^2.8.0",
+    "@eclass/semantic-release-docker": "^1.0.7",
+    "@qiwi/semantic-release-gh-pages-plugin": "^5.0.7",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.3",
+    "@semantic-release/release-notes-generator": "^9.0.2",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.6.0",
+    "eslint": "^7.27.0",
+    "esm": "^3.2.25",
+    "license-checker": "^25.0.1",
+    "mocha": "^8.4.0",
+    "mochawesome": "^6.2.2",
+    "nyc": "^15.1.0",
+    "rollup": "^2.49.0",
+    "rollup-plugin-preserve-shebang": "^1.0.1",
+    "semantic-release-license": "^1.0.3"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "puppeteer": "^9.1.1"
   }
 }
