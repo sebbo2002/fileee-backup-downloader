@@ -1,3 +1,10 @@
+## [1.0.1-develop.2](https://github.com/sebbo2002/fileee-backup-downloader/compare/v1.0.1-develop.1...v1.0.1-develop.2) (2021-06-03)
+
+
+### Bug Fixes
+
+* Repair bin path in package.json ([af570f6](https://github.com/sebbo2002/fileee-backup-downloader/commit/af570f6b10c05acc548cf87ccb2c6b6f22b33621))
+
 ## [1.0.1-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v1.0.0...v1.0.1-develop.1) (2021-06-02)
 
 # 1.0.0 (2021-05-25)
