@@ -13,7 +13,7 @@
     "license-check": "license-checker --production --summary"
   },
   "bin": {
-    "test-cli": "./dist/bin/cli.js"
+    "fileee-backup-downloader": "./dist/bin/start.js"
   },
   "repository": {
     "type": "git",
