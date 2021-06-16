@@ -1,30 +1,15 @@
 {
-  "name": "@sebbo2002/fileee-backup-downloader",
-  "version": "1.0.0-dev",
-  "description": "A hacked script that logs into Fileee and downloads a full backup. Written for offsite backups.",
-  "scripts": {
-    "build-all": "./.github/workflows/build.sh",
-    "build": "rollup -c && chmod +x ./dist/bin/*.js",
-    "start": "node ./dist/bin/start.js",
-    "develop": "rollup -c --watch",
-    "lint": "eslint .",
-    "test": "mocha",
-    "coverage": "nyc mocha",
-    "license-check": "license-checker --production --summary"
-  },
+  "author": "Sebastian Pekarek <poleezeizeixatheepho@e.sebbo.net>",
   "bin": {
     "fileee-backup-downloader": "./dist/bin/start.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sebbo2002/fileee-backup-downloader.git"
-  },
-  "author": "Sebastian Pekarek <poleezeizeixatheepho@e.sebbo.net>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sebbo2002/fileee-backup-downloader/issues"
   },
-  "homepage": "https://github.com/sebbo2002/fileee-backup-downloader#readme",
+  "dependencies": {
+    "puppeteer": "^10.0.0"
+  },
+  "description": "A hacked script that logs into Fileee and downloads a full backup. Written for offsite backups.",
   "devDependencies": {
     "@amanda-mitchell/semantic-release-npm-multiple": "^2.8.0",
     "@eclass/semantic-release-docker": "^1.0.7",
@@ -38,6 +23,7 @@
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.6.0",
     "eslint": "^7.27.0",
+    "eslint-plugin-jsonc": "^1.3.1",
     "esm": "^3.2.25",
     "license-checker": "^25.0.1",
     "mocha": "^8.4.0",
@@ -48,12 +34,31 @@
     "semantic-release-license": "^1.0.3"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
+  },
+  "exports": {
+    "import": "./src/lib/index.js",
+    "require": "./dist/lib/index.cjs"
   },
   "files": [
-    "/dist"
+    "/dist",
+    "/src"
   ],
-  "dependencies": {
-    "puppeteer": "^10.0.0"
-  }
+  "homepage": "https://github.com/sebbo2002/fileee-backup-downloader#readme",
+  "license": "MIT",
+  "name": "@sebbo2002/fileee-backup-downloader",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebbo2002/fileee-backup-downloader.git"
+  },
+  "scripts": {
+    "build": "rollup -c && chmod +x ./dist/bin/*.cjs ./src/bin/*.js",
+    "build-all": "./.github/workflows/build.sh",
+    "develop": "rollup -c --watch",
+    "license-check": "license-checker --production --summary",
+    "lint": "eslint . --ext .js,.json",
+    "start": "node ./dist/bin/start.js",
+    "test": "mocha"
+  },
+  "version": "1.0.0-dev"
 }
