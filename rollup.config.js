@@ -22,12 +22,4 @@ export default [
         plugins,
         external
     },
-    {
-        input: 'src/bin/start.js',
-        output: {
-            file: 'dist/bin/start.cjs',
-            format: 'cjs'
-        },
-        external
-    },
 ];
