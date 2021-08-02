@@ -67,12 +67,21 @@ export default class FileeeBackupDownloader {
         await $downloadButton.click();
         await page.waitForTimeout(100);
 
-        await Promise.any([
-            page.waitForSelector('.ReactModalPortal input[type="password"]'),
-            page.waitForSelector('.ReactModalPortal .mdc-typography--caption span')
-        ]);
+        await page.waitFor(() =>
+            // eslint-disable-next-line no-undef
+            document.querySelectorAll(
+                '.ReactModalPortal input[type="password"], '+
+                '.ReactModalPortal .mdc-typography--caption span'
+            ).length
+        );
 
-        const $confirmPasswordInput = await page.$('.ReactModalPortal input[type="password"]');
+        let $confirmPasswordInput = null;
+        try {
+            $confirmPasswordInput = await page.$('.ReactModalPortal input[type="password"]');
+        }
+        catch(error) {
+            // ignore error
+        }
         if($confirmPasswordInput) {
             this.logJobStart('🔑', 'Enter password (again)');
             await $confirmPasswordInput.type(password);
