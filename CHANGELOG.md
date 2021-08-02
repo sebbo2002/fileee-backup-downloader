@@ -1,3 +1,10 @@
+# [2.0.0-develop.4](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.3...v2.0.0-develop.4) (2021-08-02)
+
+
+### Bug Fixes
+
+* Fix "ENOENT: no such file or directory, chmod" on install ([990eab4](https://github.com/sebbo2002/fileee-backup-downloader/commit/990eab4ec00ecb2cd75794daef024245ccb5d263))
+
 # [2.0.0-develop.3](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.2...v2.0.0-develop.3) (2021-08-02)
 
 
