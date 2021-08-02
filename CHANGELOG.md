@@ -1,3 +1,10 @@
+# [2.0.0-develop.5](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.4...v2.0.0-develop.5) (2021-08-02)
+
+
+### Bug Fixes
+
+* Update selectors / open download instead of business upgrade ([ccc9d45](https://github.com/sebbo2002/fileee-backup-downloader/commit/ccc9d452ca2059956f42fe049d1ba95d210ba483))
+
 # [2.0.0-develop.4](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.3...v2.0.0-develop.4) (2021-08-02)
 
 
