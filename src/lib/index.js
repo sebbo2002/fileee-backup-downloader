@@ -67,7 +67,7 @@ export default class FileeeBackupDownloader {
         await $downloadButton.click();
         await page.waitForTimeout(100);
 
-        await Promise.any([
+        await (Promise.any ? Promise.any : Promise.race)([
             page.waitForSelector('.ReactModalPortal input[type="password"]'),
             page.waitForSelector('.ReactModalPortal .mdc-typography--caption span')
         ]);
