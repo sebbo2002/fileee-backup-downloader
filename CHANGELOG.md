@@ -1,3 +1,10 @@
+# [2.0.0-develop.3](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.2...v2.0.0-develop.3) (2021-08-02)
+
+
+### Bug Fixes
+
+* Ignore error on password modal if second promise is pending ([9d7a606](https://github.com/sebbo2002/fileee-backup-downloader/commit/9d7a60648190d40e1dea274ad379457fc9faa25c))
+
 # [2.0.0-develop.2](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.1...v2.0.0-develop.2) (2021-08-02)
 
 
