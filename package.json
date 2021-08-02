@@ -1,7 +1,7 @@
 {
   "author": "Sebastian Pekarek <poleezeizeixatheepho@e.sebbo.net>",
   "bin": {
-    "fileee-backup-downloader": "./dist/bin/start.js"
+    "fileee-backup-downloader": "./dist/bin/start.cjs"
   },
   "bugs": {
     "url": "https://github.com/sebbo2002/fileee-backup-downloader/issues"
