@@ -7,7 +7,7 @@ const plugins = [
 const external = [
     'os',
     'path',
-    'fs/promises',
+    'fs',
     'puppeteer',
     'readline'
 ];

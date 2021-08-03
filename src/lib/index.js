@@ -4,8 +4,10 @@
 import {tmpdir} from 'os';
 import readline from 'readline';
 import {resolve, join} from 'path';
-import {mkdtemp, readdir, rename}  from 'fs/promises';
+import {promises as fsPromises} from 'fs';
 import puppeteer from 'puppeteer';
+
+const {mkdtemp, readdir, rename} = fsPromises;
 
 export default class FileeeBackupDownloader {
     static async run() {
@@ -67,7 +69,7 @@ export default class FileeeBackupDownloader {
         await $downloadButton.click();
         await page.waitForTimeout(100);
 
-        await (Promise.any ? Promise.any : Promise.race)([
+        await Promise.race([
             page.waitForSelector('.ReactModalPortal input[type="password"]'),
             page.waitForSelector('.ReactModalPortal .mdc-typography--caption span')
         ]);
