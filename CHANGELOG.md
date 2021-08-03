@@ -1,3 +1,10 @@
+# [2.0.0-develop.7](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.6...v2.0.0-develop.7) (2021-08-03)
+
+
+### Bug Fixes
+
+* Do not use "fs/promises" as it's unavailable in node@12 ([6ecedde](https://github.com/sebbo2002/fileee-backup-downloader/commit/6ecedde29d3a3d920c135f2168f95775fe7a7a05))
+
 # [2.0.0-develop.6](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.5...v2.0.0-develop.6) (2021-08-02)
 
 
