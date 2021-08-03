@@ -1,3 +1,10 @@
+# [2.0.0-develop.6](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.5...v2.0.0-develop.6) (2021-08-02)
+
+
+### Bug Fixes
+
+* Fallback to Promise.race if Promise.any is unavailable (node.js < 15) ([084c8f7](https://github.com/sebbo2002/fileee-backup-downloader/commit/084c8f7dcb5116e8767a3730fca3b3d30bf97030))
+
 # [2.0.0-develop.5](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.4...v2.0.0-develop.5) (2021-08-02)
 
 
