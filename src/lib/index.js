@@ -124,12 +124,17 @@ export default class FileeeBackupDownloader {
 
             await page.waitForTimeout(1000);
         }
+        if(filePath === null) {
+            this.logJobEnd();
+            throw new Error('Unable to find downloaded file: filePath = null');
+        }
 
-        this.logJobStart('✋🏼', 'Close browser');
-        await browser.close();
 
         this.logJobStart('⏩', 'Move file to destination');
         await rename(filePath, destination);
+
+        this.logJobStart('✋🏼', 'Close browser');
+        await browser.close();
         this.logJobEnd();
 
         if(!process.env.FILEEE_NO_LOG) {
