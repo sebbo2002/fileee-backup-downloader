@@ -107,7 +107,17 @@ export default class FileeeBackupDownloader {
                 .catch(() => {/* ignore errors here */});
         }, 1000);
         await page.waitForResponse(
-            r => r.url().startsWith('https://my.fileee.com/api/v1/zip/download/'),
+            r => {
+                const isDownload = r.url().includes('/api/v1/zip/download/');
+                if(isDownload && r.status() !== 200) {
+                    throw new Error(
+                        `Unable to download backup from ${r.url()}: ` +
+                        `Server responded with code ${r.status()} ${r.statusText()}`
+                    );
+                }
+
+                return isDownload;
+            },
             {timeout: 30 * 60 * 1000}
         );
         clearInterval(interval);
