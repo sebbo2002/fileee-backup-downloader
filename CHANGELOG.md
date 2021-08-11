@@ -1,3 +1,16 @@
+# [2.0.0-develop.9](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.8...v2.0.0-develop.9) (2021-08-11)
+
+
+### Features
+
+* Allow to use the beta environment ([ed486d0](https://github.com/sebbo2002/fileee-backup-downloader/commit/ed486d0e765d7bb1a02eb7e4dfb5b5e12273d0ec))
+* Throw error if server responses with error download ([a4398a6](https://github.com/sebbo2002/fileee-backup-downloader/commit/a4398a6f7c24de1d8cbaeeb84a6f8ae18c54f1fa))
+
+
+### Reverts
+
+* Revert "fix: Downgrade to puppeteer@9" ([ed53437](https://github.com/sebbo2002/fileee-backup-downloader/commit/ed534375cb506e804dcf3d209cc227ca7da95b4b))
+
 # [2.0.0-develop.8](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.7...v2.0.0-develop.8) (2021-08-11)
 
 
