@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2021-08-11T07:08:51.742Z",
-    "end": "2021-08-11T07:08:52.531Z",
-    "duration": 789,
+    "start": "2021-08-11T18:21:31.429Z",
+    "end": "2021-08-11T18:21:31.651Z",
+    "duration": 222,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "3e065c18-4080-4c79-980a-998d927c5b7b",
+      "uuid": "7fd99be8-e5b9-4ba9-84d5-33e5a96b554e",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "0b6b515d-79fa-4ca5-beb2-3876b358e206",
+          "uuid": "c34e0049-351c-464c-bc62-8665165e0f31",
           "title": "General",
           "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
           "file": "/test/lib/index.js",
@@ -38,7 +38,7 @@
               "title": "pupperteer should be able to start",
               "fullTitle": "General pupperteer should be able to start",
               "timedOut": false,
-              "duration": 785,
+              "duration": 218,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "const browser = await puppeteer.launch();\nawait browser.newPage();\nawait browser.close();",
               "err": {},
-              "uuid": "170e1dd6-8bbc-4408-b56b-462cf5c6bc68",
-              "parentUUID": "0b6b515d-79fa-4ca5-beb2-3876b358e206",
+              "uuid": "e134e4bf-f2f2-466c-8cc4-7fc34d9aa8ba",
+              "parentUUID": "c34e0049-351c-464c-bc62-8665165e0f31",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "170e1dd6-8bbc-4408-b56b-462cf5c6bc68"
+            "e134e4bf-f2f2-466c-8cc4-7fc34d9aa8ba"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 785,
+          "duration": 218,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000
