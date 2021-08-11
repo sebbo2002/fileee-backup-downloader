@@ -50,7 +50,7 @@ export default class FileeeBackupDownloader {
 
     static async execute({browser, page, username, password, destination}) {
         this.logJobStart('🌍️', 'Open fileee web app');
-        await page.goto('https://my.fileee.com/account');
+        await page.goto('https://' + (process.env.FILEEE_BETA ? 'beta' : 'my') + '.fileee.com/account');
 
         this.logJobStart('👤', 'Enter username');
         const $usernameInput = await page.waitForSelector('[name="username"]');
