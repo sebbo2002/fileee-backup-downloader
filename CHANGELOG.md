@@ -1,3 +1,10 @@
+# [2.0.0-develop.8](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.7...v2.0.0-develop.8) (2021-08-11)
+
+
+### Bug Fixes
+
+* Downgrade to puppeteer@9 ([eb4eb52](https://github.com/sebbo2002/fileee-backup-downloader/commit/eb4eb52f38a46c6e359d5c455f5d14195954615e))
+
 # [2.0.0-develop.7](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0-develop.6...v2.0.0-develop.7) (2021-08-03)
 
 
