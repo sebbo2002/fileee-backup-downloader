@@ -4,6 +4,7 @@ set -e
 echo "########################"
 echo "# build.sh"
 echo "# Branch = ${BRANCH}"
+echo "# node version = $(node -v)"
 echo "# npm version = $(npm -v)"
 echo "########################"
 
@@ -17,13 +18,10 @@ fi;
 
 
 mkdir -p ./docs/
-rm -rf ./docs/coverage/ ./docs/tests/
+rm -rf ./docs/tests/
 
 
 # Test Report in ./docs/tests
 npx mocha --reporter mochawesome
 mv -f ./mochawesome-report/mochawesome.html ./mochawesome-report/index.html
 mv -f ./mochawesome-report ./docs/tests
-
-# Coverage Report in ./doc/coverage
-npm run coverage

@@ -35,6 +35,7 @@ to create my own backup of my documents at regular intervals. Just to be sure.
 |:-------------------- |:---------------------------------------------------------------------------- |
 |FILEEE_USERNAME       | Username to use to login into Fileee web app                                 |
 |FILEEE_PASSWORD       | Password to use to login                                                     |
+|FILEEE_BETA           | Use the beta environment instead of production                               |
 |BACKUP_DESTINATION    | Full destination path (folder + name), uses `~/fileee-backup.zip` if not set |
 
 <br />

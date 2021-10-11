@@ -4,8 +4,10 @@
 import {tmpdir} from 'os';
 import readline from 'readline';
 import {resolve, join} from 'path';
-import {mkdtemp, readdir, rename}  from 'fs/promises';
+import {promises as fsPromises} from 'fs';
 import puppeteer from 'puppeteer';
+
+const {mkdtemp, readdir, rename} = fsPromises;
 
 export default class FileeeBackupDownloader {
     static async run() {
@@ -48,7 +50,7 @@ export default class FileeeBackupDownloader {
 
     static async execute({browser, page, username, password, destination}) {
         this.logJobStart('🌍️', 'Open fileee web app');
-        await page.goto('https://my.fileee.com/account');
+        await page.goto('https://' + (process.env.FILEEE_BETA ? 'beta' : 'my') + '.fileee.com/account');
 
         this.logJobStart('👤', 'Enter username');
         const $usernameInput = await page.waitForSelector('[name="username"]');
@@ -62,7 +64,7 @@ export default class FileeeBackupDownloader {
         await page.waitForTimeout(2500);
 
         this.logJobStart('📑', 'Open download layer');
-        const $downloadButton = await page.waitForSelector('.grid-noGutter-spaceBetween button');
+        const $downloadButton = await page.waitForSelector('.grid-noGutter-spaceBetween:not(.h100) button');
         await page.waitForTimeout(1000);
         await $downloadButton.click();
         await page.waitForTimeout(100);
@@ -72,7 +74,15 @@ export default class FileeeBackupDownloader {
             page.waitForSelector('.ReactModalPortal .mdc-typography--caption span')
         ]);
 
-        const $confirmPasswordInput = await page.$('.ReactModalPortal input[type="password"]');
+        let $confirmPasswordInput = null;
+        try {
+            $confirmPasswordInput = await page.waitForSelector('.ReactModalPortal input[type="password"]', {
+                timeout: 5000
+            });
+        }
+        catch(error) {
+            // ignore error
+        }
         if($confirmPasswordInput) {
             this.logJobStart('🔑', 'Enter password (again)');
             await $confirmPasswordInput.type(password);
@@ -97,7 +107,17 @@ export default class FileeeBackupDownloader {
                 .catch(() => {/* ignore errors here */});
         }, 1000);
         await page.waitForResponse(
-            r => r.url().startsWith('https://my.fileee.com/api/v1/zip/download/'),
+            r => {
+                const isDownload = r.url().includes('/api/v1/zip/download/');
+                if(isDownload && r.status() !== 200) {
+                    throw new Error(
+                        `Unable to download backup from ${r.url()}: ` +
+                        `Server responded with code ${r.status()} ${r.statusText()}`
+                    );
+                }
+
+                return isDownload;
+            },
             {timeout: 30 * 60 * 1000}
         );
         clearInterval(interval);

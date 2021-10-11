@@ -12,7 +12,7 @@ jobs:
     if: contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main'
     strategy:
       matrix:
-        node: [10.x, 12.x, 14.x, 15.x]
+        node: [12.x, 14.x, 16.x]
     steps:
       - name: ☁️ Checkout Project
         uses: actions/checkout@v2
@@ -32,31 +32,6 @@ jobs:
       - name: ⏳ Run tests
         run: npm run test
 
-  coverage:
-    name: Code Coverage / Lint
-    runs-on: ubuntu-latest
-    if: contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main'
-    steps:
-      - name: ☁️ Checkout Project
-        uses: actions/checkout@v2
-      - name: 🔧 Setup node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-      - name: 🔧 Setup npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: 📦 Install dependencies
-        run: npm ci
-      - name: 🔍 Run linter
-        run: npm run lint
-      - name: ⚙️ Build project
-        run: npm run build-all
-
   license-checker:
     name: License Checker
     runs-on: ubuntu-latest
@@ -66,8 +41,6 @@ jobs:
         uses: actions/checkout@v2
       - name: 🔧 Setup node.js
         uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
       - name: 🔧 Setup npm cache
         uses: actions/cache@v2
         with:
@@ -80,10 +53,32 @@ jobs:
       - name: 🕵️‍♀️ Run license checker
         run: npm run license-check
 
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    if: contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main'
+    steps:
+      - name: ☁️ Checkout Project
+        uses: actions/checkout@v2
+      - name: 🔧 Setup node.js
+        uses: actions/setup-node@v2
+      - name: 🔧 Setup npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: 📦 Install dependencies
+        run: npm ci
+      - name: 🔍 Run linter
+        run: npm run lint
+
   docker-image:
     name: Build Docker Image
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    env:
+      PUSH_TO_DOCKERHUB: ${{ (github.repository != 'sebbo2002/js-template') && (secrets.DOCKERHUB_TOKEN != null) }}
     steps:
       - name: ☁️ Checkout
         uses: actions/checkout@v2
@@ -100,6 +95,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 🔐 Login to DockerHub
         uses: docker/login-action@v1
+        if: ${{ env.PUSH_TO_DOCKERHUB == true }}
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -110,42 +106,61 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          github-token: ${{ secrets.GH_TOKEN }}
           target: build-container
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64
+          pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:build-container
-          cache-from: ghcr.io/${{ github.repository }}:build-container
+          tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: 🪄 Build and push (2/2)
         id: build
         uses: docker/build-push-action@v2
         with:
           context: .
+          github-token: ${{ secrets.GH_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64
+          pull: true
           push: true
-          tags: |
-            ${{ github.repository }}:${{ github.sha }}
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
           labels: |
             org.opencontainers.image.authors=${{ github.repository_owner }}
             org.opencontainers.image.created=${{ steps.buildVars.outputs.date }}
             org.opencontainers.image.ref.name=${{ github.ref }}
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
-          cache-from: ghcr.io/${{ github.repository }}:build-container
+          cache-from: |
+            type=gha
+            type=registry,ref=ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
+            type=registry,ref=ghcr.io/${{ github.repository }}:next
+            type=registry,ref=ghcr.io/${{ github.repository }}:latest
+          cache-to: type=gha,mode=max
+      - name: 🔄 Push container to DockerHub
+        if: ${{ env.PUSH_TO_DOCKERHUB == true }}
+        run: |
+          docker pull $SOURCE
+          docker tag $SOURCE $TARGET
+          docker push $TARGET
+        env:
+          SOURCE: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          TARGET: ${{ github.repository }}:${{ github.sha }}
     outputs:
       digest: ${{ steps.build.outputs.digest }}
 
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      PUSH_TO_DOCKERHUB: ${{ (github.repository != 'sebbo2002/js-template') && (secrets.DOCKERHUB_TOKEN != null) }}
     needs:
-      - coverage
       - tests
       - license-checker
+      - lint
       - docker-image
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    if: ${{ github.repository != 'sebbo2002/js-template' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') }}
     steps:
       - name: ☁️ Checkout Project
         uses: actions/checkout@v2
@@ -175,10 +190,23 @@ jobs:
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: ⬇️ Pull Containers
+      - name: ⬇️ Pull GitHub Containers
+        id: github
         run: |
-          docker pull "${{ github.repository }}@${{ needs.docker-image.outputs.digest }}"
-          docker pull "ghcr.io/${{ github.repository }}@${{ needs.docker-image.outputs.digest }}"
+          docker pull "${IMAGE}@${DIGEST}"
+          echo "::set-output name=image::${IMAGE}@${DIGEST}"
+        env:
+          IMAGE: ghcr.io/${{ github.repository }}
+          DIGEST: ${{ needs.docker-image.outputs.digest }}
+      - name: ⬇️ Pull Docker Hub Containers
+        if: ${{ env.PUSH_TO_DOCKERHUB == true }}
+        id: dockerhub
+        run: |
+          docker pull "${IMAGE}@${DIGEST}"
+          echo "::set-output name=image::${IMAGE}@${DIGEST}"
+        env:
+          IMAGE: ${{ github.repository }}
+          DIGEST: ${{ needs.docker-image.outputs.digest }}
       - name: 🪄 Run semantic-release
         run: BRANCH=${GITHUB_REF#refs/heads/} npx semantic-release
         env:
@@ -189,16 +217,11 @@ jobs:
           GITHUB_NPM_TOKEN: ${{ secrets.GH_TOKEN }}
           PUBLIC_NPM_CONFIG_REGISTRY: https://registry.npmjs.org
           PUBLIC_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          DOCKER_DIGEST: ${{ needs.docker-image.outputs.digest }}
-          DOCKER_REGISTRY_IMAGE: ${{ github.repository }}
-          DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
-          DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          GITHUB_REGISTRY_IMAGE: ghcr.io/${{ github.repository }}
-          GITHUB_REGISTRY_USERNAME: ${{ github.repository_owner }}
-          GITHUB_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_LOCAL_IMAGE_GH: ${{ steps.github.outputs.image }}
+          DOCKER_LOCAL_IMAGE_DH: ${{ steps.dockerhub.outputs.image }}
       - name: 🔃 Merge main back into develop
         if: ${{ github.ref == 'refs/heads/main' }}
-        uses: everlytic/branch-merge@1.1.0
+        uses: everlytic/branch-merge@1.1.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_ref: 'main'
