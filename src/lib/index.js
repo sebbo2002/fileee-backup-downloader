@@ -11,9 +11,11 @@ const {mkdtemp, readdir, rename} = fsPromises;
 
 export default class FileeeBackupDownloader {
     static async run() {
-        console.log('👋🏼 Okay, hi there.');
-        console.log('   Let\' do some backups!');
-        console.log('');
+        if(!process.env.FILEEE_NO_LOG) {
+            console.log('👋🏼 Okay, hi there.');
+            console.log('   Let\' do some backups!');
+            console.log('');
+        }
 
         const username = process.env.FILEEE_USERNAME;
         if(!username) {
