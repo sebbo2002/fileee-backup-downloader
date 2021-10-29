@@ -1,3 +1,10 @@
+## [2.0.1-develop.2](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.1-develop.1...v2.0.1-develop.2) (2021-10-29)
+
+
+### Bug Fixes
+
+* Hide “hi there” message when FILEEE_NO_LOG is set ([37c2305](https://github.com/sebbo2002/fileee-backup-downloader/commit/37c23057f14b509c5dffd8864e187faa02d509e8))
+
 ## [2.0.1-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0...v2.0.1-develop.1) (2021-10-26)
 
 # [2.0.0](https://github.com/sebbo2002/fileee-backup-downloader/compare/v1.0.1...v2.0.0) (2021-10-11)
