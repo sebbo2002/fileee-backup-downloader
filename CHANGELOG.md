@@ -1,3 +1,10 @@
+## [2.0.2-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.1...v2.0.2-develop.1) (2021-12-02)
+
+
+### Bug Fixes
+
+* Update to work on current web app ([2c2dcef](https://github.com/sebbo2002/fileee-backup-downloader/commit/2c2dcef23a92011789ce77a6ab9e04fca6ce84f5))
+
 ## [2.0.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.0...v2.0.1) (2021-10-29)
 
 
