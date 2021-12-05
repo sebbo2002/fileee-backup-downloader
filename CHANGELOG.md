@@ -1,3 +1,10 @@
+## [2.0.2-develop.2](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.2-develop.1...v2.0.2-develop.2) (2021-12-05)
+
+
+### Bug Fixes
+
+* **CI:** Fix DockerHub container release ([01b7534](https://github.com/sebbo2002/fileee-backup-downloader/commit/01b753406d1f1ef24a949c7d7b946d99b779d013))
+
 ## [2.0.2-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.1...v2.0.2-develop.1) (2021-12-02)
 
 
