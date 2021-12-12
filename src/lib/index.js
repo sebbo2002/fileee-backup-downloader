@@ -52,7 +52,7 @@ export default class FileeeBackupDownloader {
 
     static async execute({browser, page, username, password, destination}) {
         this.logJobStart('🌍️', 'Open fileee web app');
-        await page.goto('https://' + (process.env.FILEEE_BETA ? 'beta' : 'my') + '.fileee.com/account');
+        await page.goto('https://' + (process.env.FILEEE_BETA ? 'beta' : 'my') + '.fileee.com/account/general/statistics');
 
         this.logJobStart('👤', 'Enter username');
         const $usernameInput = await page.waitForSelector('[name="username"]');
@@ -66,7 +66,7 @@ export default class FileeeBackupDownloader {
         await page.waitForTimeout(2500);
 
         this.logJobStart('📑', 'Open download layer');
-        const $downloadButton = await page.waitForSelector('.grid-noGutter-spaceBetween:not(.h100) button');
+        const $downloadButton = await page.waitForSelector('button');
         await page.waitForTimeout(1000);
         await $downloadButton.click();
         await page.waitForTimeout(100);
