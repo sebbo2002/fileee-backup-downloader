@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2021-12-12T22:46:35.823Z",
-    "end": "2021-12-12T22:46:36.047Z",
-    "duration": 224,
+    "start": "2022-03-31T17:55:11.882Z",
+    "end": "2022-03-31T17:55:12.720Z",
+    "duration": 838,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "e6838a82-530e-4b2f-a71b-a60e7f7ca9e9",
+      "uuid": "10f3ff09-6c00-4f81-b280-f3a3f7c5e945",
       "title": "",
-      "fullFile": "",
-      "file": "",
+      "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
+      "file": "/test/lib/index.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "014cad80-5a5d-433e-9cd2-cbca8b9883cd",
+          "uuid": "d5f1d735-75e9-482a-b112-1b06ccb2220d",
           "title": "General",
           "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
           "file": "/test/lib/index.js",
@@ -38,7 +38,7 @@
               "title": "pupperteer should be able to start",
               "fullTitle": "General pupperteer should be able to start",
               "timedOut": false,
-              "duration": 220,
+              "duration": 834,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "const browser = await puppeteer.launch();\nawait browser.newPage();\nawait browser.close();",
               "err": {},
-              "uuid": "24fd8d58-c25b-47f6-ad53-9e09de9830d1",
-              "parentUUID": "014cad80-5a5d-433e-9cd2-cbca8b9883cd",
+              "uuid": "9d51d264-bb4c-4840-ab24-2b06652e0a59",
+              "parentUUID": "d5f1d735-75e9-482a-b112-1b06ccb2220d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "24fd8d58-c25b-47f6-ad53-9e09de9830d1"
+            "9d51d264-bb4c-4840-ab24-2b06652e0a59"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 220,
+          "duration": 834,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000
@@ -78,7 +78,7 @@
   ],
   "meta": {
     "mocha": {
-      "version": "9.1.3"
+      "version": "9.2.2"
     },
     "mochawesome": {
       "options": {
@@ -90,11 +90,11 @@
         "useInlineDiffs": false,
         "code": true
       },
-      "version": "6.3.1"
+      "version": "7.1.1"
     },
     "marge": {
       "options": null,
-      "version": "5.2.0"
+      "version": "6.1.1"
     }
   }
 }
