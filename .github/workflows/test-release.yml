@@ -96,7 +96,7 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
           target: build-container
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64
           pull: true
           push: true
           tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
@@ -200,7 +200,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GH_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64
           pull: true
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -241,17 +241,6 @@ jobs:
         env:
           SOURCE: ghcr.io/${{ github.repository }}:${{ github.sha }}
           TARGET: ${{ github.repository }}:${{ github.sha }}
-      - name: 🏁 Boot-up Check
-        if: github.repository != 'sebbo2002/js-template'
-        run: |
-          docker run --name "app" -d $IMAGE
-          sleep 5
-          docker logs app
-          docker exec app echo "Ok."
-          docker stop app
-          docker rm app
-        env:
-          IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
     outputs:
       digest: ${{ steps.docker-build-2.outputs.digest }}
 

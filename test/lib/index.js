@@ -1,8 +1,14 @@
-import Magic from '../../src/lib/index.js';
-import assert from 'assert';
+'use strict';
 
-describe('Example', function () {
-    it('should work with integers', function () {
-        assert.strictEqual(Magic.double(2), 4);
+import puppeteer from 'puppeteer';
+
+describe('General', function () {
+    this.timeout(60000);
+
+    it('pupperteer should be able to start', async function () {
+        const browser = await puppeteer.launch();
+        await browser.newPage();
+
+        await browser.close();
     });
 });

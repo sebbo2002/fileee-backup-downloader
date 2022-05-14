@@ -4,31 +4,22 @@ const plugins = [
     shebang()
 ];
 
+const external = [
+    'os',
+    'path',
+    'fs',
+    'puppeteer',
+    'readline'
+];
+
 export default [
-    {
-        input: 'src/bin/cli.js',
-        output: {
-            file: 'dist/bin/cli.cjs',
-            format: 'cjs'
-        },
-        plugins
-    },
     {
         input: 'src/bin/start.js',
         output: {
             file: 'dist/bin/start.cjs',
             format: 'cjs'
         },
-        external: [ 'express' ],
-        plugins
+        plugins,
+        external
     },
-    {
-        input: 'src/lib/index.js',
-        output: {
-            file: 'dist/lib/index.cjs',
-            format: 'cjs',
-            exports: 'auto'
-        },
-        plugins
-    }
 ];

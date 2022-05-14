@@ -1,49 +1,51 @@
-# template
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
-Here would be a very short description of the project. So in this example it would be a short information that this is
-a template that I use to start new projects and services.
+## 🧐 What's this?
 
+This `fileee-backup-downloader` is a hastily hacked script that logs into [Fileee](https://www.fileee.com/) with
+[pupperteer](https://developers.google.com/web/tools/puppeteer/) and downloads a full backup archive. I use the script
+to create my own backup of my documents at regular intervals. Just to be sure.
 
-## 🚨 Template Usage Checklist
-- [ ] Update project name in `package.json`
-- [ ] Create `main` and `develop` branches
-- [ ] Set `develop` as default branch
-- [ ] Create Docker Repository
-    - [ ] Add Repository Description
-    - [ ] Add secret: `DOCKERHUB_TOKEN`
-- [ ] Create npm Repository with `npm publish --access public`
-    - [ ] Add secret: `NPM_TOKEN`
-- [ ] Go through repo settings
+<br />
 
+## 🎉 Features
+- Login to [Fileee](https://www.fileee.com/) using username and password (no 2-Factor supported)
+- Download ZIP archive in a temporary folder
+- Move archive to given destination
+
+<br />
 
 ## 📦 Installation
 
-	git clone https://github.com/sebbo2002/template.git
-    cd ./template
+	npm i -g @sebbo2002/fileee-backup-downloader
+    fileee-backup-downloader
 
-    npm install
+    docker run --rm \
+        -e FILEEE_USERNAME=**** \
+        -e FILEEE_PASSWORD=**** \
+        -e BACKUP_DESTINATION=/backup/fileee-backup.zip \
+        -v $(pwd):/backup
+        @sebbo2002/fileee-backup-downloader
 
+<br />
 
-## ⚡️ Quick Start
+## 🔧 Usage
 
-This is where it would normally say how to use the project.
-This could be a code example for a library or instructions on how to use a CLI tool.
+| Environment Variable | Description                                                                  |
+|:-------------------- |:---------------------------------------------------------------------------- |
+|FILEEE_USERNAME       | Username to use to login into Fileee web app                                 |
+|FILEEE_PASSWORD       | Password to use to login                                                     |
+|FILEEE_BETA           | Use the beta environment instead of production                               |
+|BACKUP_DESTINATION    | Full destination path (folder + name), uses `~/fileee-backup.zip` if not set |
 
+<br />
 
-## 📑 API-Reference
+## 📱 Screenshot
+![Screenshot of a terminal running the script](https://d.sebbo.net/screenshot-3j3cfHIb10luztGF1Llflg5qgOIVDCg9BNk5GdKo1dK98DaIaYGPex8YLotZeyAaIvmZLc7qeVzPXecIejkcuczcLY0Bvsaioq98.png)
 
-Is there an API that needs to be documented? Then here would be a nice place for it. If there is external documentation,
-you can link it here ([example](https://github.com/sebbo2002/ical-generator/#-api-reference)).
+<br />
 
+## 👩‍⚖️️ Legal Stuff
 
-## 🙋 FAQ
-
-### What's `1` + `2`
-It's `3` 🎉
-
-
-## 🙆🏼‍♂️ Copyright and license
-
-Copyright (c) Sebastian Pekarek under the [MIT license](LICENSE).
+- This tool was created out of private interest and is not affiliated with Fileee or the company behind it
+- Licensed under the [MIT license](LICENSE)
