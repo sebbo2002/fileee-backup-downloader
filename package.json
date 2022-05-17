@@ -11,7 +11,7 @@
   },
   "description": "A hacked script that logs into Fileee and downloads a full backup. Written for offsite backups.",
   "devDependencies": {
-    "@amanda-mitchell/semantic-release-npm-multiple": "^3.2.0",
+    "@amanda-mitchell/semantic-release-npm-multiple": "^3.2.1",
     "@qiwi/semantic-release-gh-pages-plugin": "^5.2.0",
     "@sebbo2002/semantic-release-docker": "^1.0.0-develop.1",
     "@semantic-release/changelog": "^6.0.1",
@@ -20,7 +20,7 @@
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/mocha": "^9.1.1",
     "@types/node": "^17.0.31",
-    "eslint": "^8.13.0",
+    "eslint": "^8.15.0",
     "eslint-plugin-jsonc": "^2.2.1",
     "esm": "^3.2.25",
     "license-checker": "^25.0.1",
