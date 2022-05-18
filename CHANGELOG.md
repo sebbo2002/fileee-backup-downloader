@@ -1,3 +1,5 @@
+## [2.0.6-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.5...v2.0.6-develop.1) (2022-05-18)
+
 ## [2.0.5](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.4...v2.0.5) (2022-05-14)
 
 ## [2.0.5-develop.5](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.5-develop.4...v2.0.5-develop.5) (2022-05-14)
