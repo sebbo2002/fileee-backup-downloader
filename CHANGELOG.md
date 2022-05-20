@@ -1,3 +1,11 @@
+## [2.0.6-develop.2](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.6-develop.1...v2.0.6-develop.2) (2022-05-20)
+
+
+### Reverts
+
+* Revert "ci: Remove GH_TOKEN and use GITHUB_TOKEN" ([b5c2eb6](https://github.com/sebbo2002/fileee-backup-downloader/commit/b5c2eb66170b38bda1e49ad5bb5cf02bd13eb8e4))
+* Revert "ci: Remove docker setup" ([655068b](https://github.com/sebbo2002/fileee-backup-downloader/commit/655068b3b9c6139181ae87421db5f8144fae3e18))
+
 ## [2.0.6-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.5...v2.0.6-develop.1) (2022-05-18)
 
 ## [2.0.5](https://github.com/sebbo2002/fileee-backup-downloader/compare/v2.0.4...v2.0.5) (2022-05-14)
