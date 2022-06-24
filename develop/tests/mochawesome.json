@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2022-06-22T19:54:41.379Z",
-    "end": "2022-06-22T19:54:42.921Z",
-    "duration": 1542,
+    "start": "2022-06-24T14:06:47.712Z",
+    "end": "2022-06-24T14:06:47.974Z",
+    "duration": 262,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "aaa72c33-89ac-4e8c-9942-fa9b2d5b6774",
+      "uuid": "207293e0-be1f-40d8-914c-d32471906bab",
       "title": "",
       "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
       "file": "/test/lib/index.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "9aa599cb-fe86-4919-9725-7367e75a203a",
+          "uuid": "8749aeaf-5189-4928-806c-8bf4069c4a6f",
           "title": "General",
           "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
           "file": "/test/lib/index.js",
@@ -38,7 +38,7 @@
               "title": "pupperteer should be able to start",
               "fullTitle": "General pupperteer should be able to start",
               "timedOut": false,
-              "duration": 1537,
+              "duration": 257,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "const browser = await puppeteer.launch();\nawait browser.newPage();\nawait browser.close();",
               "err": {},
-              "uuid": "ea73e5c0-d5b3-4a70-adcc-8b07a1b113e5",
-              "parentUUID": "9aa599cb-fe86-4919-9725-7367e75a203a",
+              "uuid": "3bd3ea8e-1d5c-48fb-86b2-7aee54ee5bfd",
+              "parentUUID": "8749aeaf-5189-4928-806c-8bf4069c4a6f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "ea73e5c0-d5b3-4a70-adcc-8b07a1b113e5"
+            "3bd3ea8e-1d5c-48fb-86b2-7aee54ee5bfd"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1537,
+          "duration": 257,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000
