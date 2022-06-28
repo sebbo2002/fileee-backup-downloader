@@ -55,7 +55,7 @@
     "develop": "rollup -c --watch",
     "license-check": "license-checker --production --summary",
     "lint": "eslint . --ext .js,.json",
-    "start": "node ./dist/bin/start.js",
+    "start": "node ./dist/bin/start.cjs",
     "test": "mocha"
   },
   "type": "module",
