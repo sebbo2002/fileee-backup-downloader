@@ -93,7 +93,7 @@ export default class FileeeBackupDownloader {
 
         this.logJobStart('🔄', 'Prepare download');
         const tmpDir = await mkdtemp(join(tmpdir(), 'fileee-download-'));
-        await page._client.send('Page.setDownloadBehavior', {
+        await page._client().send('Page.setDownloadBehavior', {
             behavior: 'allow',
             downloadPath: tmpDir,
         });
