@@ -19,7 +19,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.7.14",
     "eslint": "^8.21.0",
     "eslint-plugin-jsonc": "^2.4.0",
     "esm": "^3.2.25",
