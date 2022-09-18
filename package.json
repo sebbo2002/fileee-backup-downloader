@@ -7,7 +7,7 @@
     "url": "https://github.com/sebbo2002/fileee-backup-downloader/issues"
   },
   "dependencies": {
-    "puppeteer": "^16.2.0"
+    "puppeteer": "^17.1.3"
   },
   "description": "A hacked script that logs into Fileee and downloads a full backup. Written for offsite backups.",
   "devDependencies": {
@@ -20,7 +20,7 @@
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/mocha": "^9.1.1",
     "@types/node": "^18.7.14",
-    "eslint": "^8.21.0",
+    "eslint": "^8.23.0",
     "eslint-plugin-jsonc": "^2.4.0",
     "esm": "^3.2.25",
     "license-checker": "^25.0.1",
