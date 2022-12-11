@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2022-10-13T11:07:47.773Z",
-    "end": "2022-10-13T11:07:48.071Z",
-    "duration": 298,
+    "start": "2022-12-11T14:33:12.697Z",
+    "end": "2022-12-11T14:33:13.218Z",
+    "duration": 521,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ef285be8-080c-4f9d-a20f-c65100b707dd",
+      "uuid": "e813df0c-db3c-4737-b1bb-185a7f917865",
       "title": "",
       "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
       "file": "/test/lib/index.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "879778fa-a681-4f7d-962f-17de982ba09c",
+          "uuid": "fa70849c-c427-4df8-b174-8d81f6e85503",
           "title": "General",
           "fullFile": "/home/runner/work/fileee-backup-downloader/fileee-backup-downloader/test/lib/index.js",
           "file": "/test/lib/index.js",
@@ -38,7 +38,7 @@
               "title": "pupperteer should be able to start",
               "fullTitle": "General pupperteer should be able to start",
               "timedOut": false,
-              "duration": 293,
+              "duration": 518,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "const browser = await puppeteer.launch();\nawait browser.newPage();\nawait browser.close();",
               "err": {},
-              "uuid": "e3dd9978-3069-47fd-96af-489cb1de0b0f",
-              "parentUUID": "879778fa-a681-4f7d-962f-17de982ba09c",
+              "uuid": "91647dcb-1a90-4b4a-bf2b-f22a4151caa1",
+              "parentUUID": "fa70849c-c427-4df8-b174-8d81f6e85503",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "e3dd9978-3069-47fd-96af-489cb1de0b0f"
+            "91647dcb-1a90-4b4a-bf2b-f22a4151caa1"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 293,
+          "duration": 518,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000
@@ -78,7 +78,7 @@
   ],
   "meta": {
     "mocha": {
-      "version": "10.0.0"
+      "version": "10.2.0"
     },
     "mochawesome": {
       "options": {
