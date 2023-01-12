@@ -60,7 +60,7 @@ export default class FileeeBackupDownloader {
         await $usernameInput.press('Enter');
 
         this.logJobStart('🔑️', 'Enter password');
-        const $passwordInput = await page.waitForSelector('[name="password"]');
+        const $passwordInput = await page.waitForSelector('[type="password"]');
         await $passwordInput.type(password);
         await $passwordInput.press('Enter');
         await page.waitForTimeout(2500);
