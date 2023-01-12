@@ -1,3 +1,10 @@
+## [3.0.7-develop.2](https://github.com/sebbo2002/fileee-backup-downloader/compare/v3.0.7-develop.1...v3.0.7-develop.2) (2023-01-12)
+
+
+### Bug Fixes
+
+* Update password input ([0679ef4](https://github.com/sebbo2002/fileee-backup-downloader/commit/0679ef4eae75531e7e8d028b294bd5e270c5667b))
+
 ## [3.0.7-develop.1](https://github.com/sebbo2002/fileee-backup-downloader/compare/v3.0.6...v3.0.7-develop.1) (2023-01-02)
 
 ## [3.0.6](https://github.com/sebbo2002/fileee-backup-downloader/compare/v3.0.5...v3.0.6) (2022-12-27)
